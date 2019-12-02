@@ -1,10 +1,10 @@
 package com.npy.controller;
 
-import com.southwind.entity.Account;
-import com.southwind.entity.Admin;
-import com.southwind.entity.User;
-import com.southwind.feign.AccountFeign;
-import com.southwind.utils.ReflectUtils;
+import com.npy.entity.Account;
+import com.npy.entity.Admin;
+import com.npy.entity.User;
+import com.npy.feign.AccountFeign;
+import com.npy.utils.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

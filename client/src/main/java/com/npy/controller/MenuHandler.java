@@ -1,9 +1,9 @@
 package com.npy.controller;
 
-import com.southwind.entity.Menu;
-import com.southwind.entity.MenuVO;
-import com.southwind.feign.MenuFeign;
-import com.southwind.feign.OrderFeign;
+import com.npy.entity.Menu;
+import com.npy.entity.MenuVO;
+import com.npy.feign.MenuFeign;
+import com.npy.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

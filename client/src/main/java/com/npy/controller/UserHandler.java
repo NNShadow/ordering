@@ -1,9 +1,9 @@
 package com.npy.controller;
 
-import com.southwind.entity.User;
-import com.southwind.entity.UserVO;
-import com.southwind.feign.OrderFeign;
-import com.southwind.feign.UserFeign;
+import com.npy.entity.User;
+import com.npy.entity.UserVO;
+import com.npy.feign.OrderFeign;
+import com.npy.feign.UserFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

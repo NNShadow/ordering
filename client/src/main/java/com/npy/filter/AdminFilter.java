@@ -1,6 +1,6 @@
 package com.npy.filter;
 
-import com.southwind.entity.Admin;
+import com.npy.entity.Admin;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Component
-@WebFilter(urlPatterns = {"/main.html","/account/redirect/main"},filterName = "adminFilter")
+@WebFilter(urlPatterns = {"/main.html", "/account/redirect/main"}, filterName = "adminFilter")
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -29,10 +29,10 @@ public class AdminFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         Admin admin = (Admin) session.getAttribute("admin");
-        if(admin == null){
+        if (admin == null) {
             response.sendRedirect("login.html");
-        }else{
-            filterChain.doFilter(servletRequest,servletResponse);
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 

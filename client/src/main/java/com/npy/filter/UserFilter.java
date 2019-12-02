@@ -1,6 +1,6 @@
 package com.npy.filter;
 
-import com.southwind.entity.User;
+import com.npy.entity.User;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;

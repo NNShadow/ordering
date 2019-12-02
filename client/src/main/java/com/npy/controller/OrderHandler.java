@@ -1,7 +1,11 @@
 package com.npy.controller;
 
-import com.southwind.entity.*;
-import com.southwind.feign.OrderFeign;
+import com.npy.entity.Admin;
+import com.npy.entity.Menu;
+import com.npy.entity.Order;
+import com.npy.entity.OrderVO;
+import com.npy.entity.User;
+import com.npy.feign.OrderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
