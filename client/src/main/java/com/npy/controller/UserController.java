@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -28,11 +30,23 @@ public class UserController {
         return userFeign.findAll(page, limit);
     }
 
+    @GetMapping("/findAll/{page}/{limit}")
+    @ResponseBody
+    public UserVO findAll2(@PathVariable("page") int page, @PathVariable("limit") int limit){
+        return userFeign.findAll(page, limit);
+    }
+
     @PostMapping("/save")
     public String save(User user){
+        user.setRegisterdate(new Date());
         userFeign.save(user);
         return "redirect:/account/redirect/user_manage";
     }
+
+//    @GetMapping("/redirect/{location}")
+//    public String redirect(@PathVariable("location") String location){
+//        return location;
+//    }
 
     @GetMapping("/deleteById/{id}")
     public String deleteById(@PathVariable("id") long id){
