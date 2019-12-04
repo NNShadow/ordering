@@ -18,27 +18,26 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/account")
-public class AccountHandler {
-
+public class AccountController {
     @Autowired
     private AccountFeign accountFeign;
 
     @PostMapping("/login")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("type") String type, HttpSession session){
-        Account account = accountFeign.login(username,password,type);
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("type") String type, HttpSession session) {
+        Account account = accountFeign.login(username, password, type);
         String target = null;
-        if(account == null){
+        if (account == null) {
             target = "login";
-        }else{
-            switch (type){
+        } else {
+            switch (type) {
                 case "user":
                     User user = convertUser(account);
-                    session.setAttribute("user",user);
+                    session.setAttribute("user", user);
                     target = "redirect:/account/redirect/index";
                     break;
                 case "admin":
                     Admin admin = convertAdmin(account);
-                    session.setAttribute("admin",admin);
+                    session.setAttribute("admin", admin);
                     target = "redirect:/account/redirect/main";
                     break;
             }
@@ -47,33 +46,33 @@ public class AccountHandler {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "login";
     }
 
     @RequestMapping("/redirect/{target}")
-    public String redirect(@PathVariable("target") String target){
+    public String redirect(@PathVariable("target") String target) {
         return target;
     }
 
-    private User convertUser(Account account){
+    private User convertUser(Account account) {
         User user = new User();
-        user.setUsername(ReflectUtils.getFieldValue(account,"username")+"");
-        user.setPassword(ReflectUtils.getFieldValue(account,"password")+"");
-        user.setGender(ReflectUtils.getFieldValue(account,"gender")+"");
-        user.setId((long)(ReflectUtils.getFieldValue(account,"id")));
-        user.setNickname(ReflectUtils.getFieldValue(account,"nickname")+"");
-        user.setRegisterdate((Date)(ReflectUtils.getFieldValue(account,"registerdate")));
-        user.setTelephone(ReflectUtils.getFieldValue(account,"telephone")+"");
+        user.setUsername(ReflectUtils.getFieldValue(account, "username") + "");
+        user.setPassword(ReflectUtils.getFieldValue(account, "password") + "");
+        user.setGender(ReflectUtils.getFieldValue(account, "gender") + "");
+        user.setId((long) (ReflectUtils.getFieldValue(account, "id")));
+        user.setNickname(ReflectUtils.getFieldValue(account, "nickname") + "");
+        user.setRegisterdate((Date) (ReflectUtils.getFieldValue(account, "registerdate")));
+        user.setTelephone(ReflectUtils.getFieldValue(account, "telephone") + "");
         return user;
     }
 
-    private Admin convertAdmin(Account account){
+    private Admin convertAdmin(Account account) {
         Admin admin = new Admin();
-        admin.setUsername(ReflectUtils.getFieldValue(account,"username")+"");
-        admin.setPassword(ReflectUtils.getFieldValue(account,"password")+"");
-        admin.setId((long)(ReflectUtils.getFieldValue(account,"id")));
+        admin.setUsername(ReflectUtils.getFieldValue(account, "username") + "");
+        admin.setPassword(ReflectUtils.getFieldValue(account, "password") + "");
+        admin.setId((long) (ReflectUtils.getFieldValue(account, "id")));
         return admin;
     }
 }
