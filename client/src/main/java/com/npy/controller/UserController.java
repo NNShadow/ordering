@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/user")
-public class UserHandler {
+public class UserController {
 
     @Autowired
     private UserFeign userFeign;
