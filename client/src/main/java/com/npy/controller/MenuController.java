@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/menu")
-public class MenuHandler {
+public class MenuController {
 
     @Autowired
     private MenuFeign menuFeign;
