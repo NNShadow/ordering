@@ -19,7 +19,7 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/order")
-public class OrderHandler {
+public class OrderController {
 
     @Autowired
     private OrderFeign orderFeign;
